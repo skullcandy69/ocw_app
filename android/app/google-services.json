@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "195426054970",
+    "firebase_url": "https://door2door-11f46.firebaseio.com",
+    "project_id": "door2door-11f46",
+    "storage_bucket": "door2door-11f46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195426054970:android:b7f9028fcdf0c4ab43d603",
+        "android_client_info": {
+          "package_name": "com.olacarwash.ocw_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195426054970-1jovlb73ek82m960gtcmlomndtfhhlva.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.olacarwash.ocw_app",
+            "certificate_hash": "4e301d3652aa15a650d2a5c8697114b06c25b80b"
+          }
+        },
+        {
+          "client_id": "195426054970-tslmh75vnbh07e7vo9qb5sq52amhgfj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgFQVeH6syzNFodUggQoHwzT0Vlp3tSNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195426054970-tslmh75vnbh07e7vo9qb5sq52amhgfj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
