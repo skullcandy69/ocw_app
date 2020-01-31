@@ -452,26 +452,26 @@ class _PostViewState extends State<PostView> {
           ],
         ),
         SizedBox(height: 5),
-        if (widget.post.vehicleNo != null)
-          (Row(
-            children: <Widget>[
-              Text(
-                'Vehicle Number : ',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 13.0,
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                widget.post.vehicleNo.toString(),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: Colors.grey, fontSize: 13.0),
-              ),
-            ],
-          )),
+//        if (widget.post.vehicleNo != null)
+//          (Row(
+//            children: <Widget>[
+//              Text(
+//                'Vehicle Number : ',
+//                maxLines: 1,
+//                overflow: TextOverflow.ellipsis,
+//                style: TextStyle(
+//                    color: Colors.black,
+//                    fontSize: 13.0,
+//                    fontWeight: FontWeight.bold),
+//              ),
+//              Text(
+//                widget.post.vehicleNo.toString(),
+//                maxLines: 1,
+//                overflow: TextOverflow.ellipsis,
+//                style: TextStyle(color: Colors.grey, fontSize: 13.0),
+//              ),
+//            ],
+//          )),
         Row(
           children: <Widget>[
             Text(

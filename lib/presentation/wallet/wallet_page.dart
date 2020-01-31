@@ -34,10 +34,10 @@ class _WalletState extends State<Wallet> {
     SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Wallet'),
-          backgroundColor: Colors.black,
-        ),
+//        appBar: AppBar(
+//          title: Text('Wallet'),
+//          backgroundColor: Colors.black,
+//        ),
         body: RefreshIndicator(
           notificationPredicate: shouldRefresh,
           child: SingleChildScrollView(

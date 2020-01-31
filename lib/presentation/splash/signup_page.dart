@@ -95,7 +95,7 @@ class SignUpState extends State<SignUpPage> {
                           ),
                           validator: (value) {
                             String pattern = r'[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$';
-                            RegExp rx = new RegExp(pattern);
+                            RegExp rx = new RegExp (pattern);
                             if (value.isEmpty) {
                               return 'First name required'; //StringUtil.FIRST_NAME_REQUIRED_TEXT;
                             } else if (!rx.hasMatch(value)) {

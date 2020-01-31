@@ -30,7 +30,7 @@ class OlaCarWash extends StatelessWidget {
     return StoreProvider(
       store: store,
       child: MaterialApp(
-        color: Colors.greenAccent,
+        debugShowCheckedModeBanner: false,color: Colors.greenAccent,
         theme: ThemeData(
           appBarTheme: AppBarTheme(
             color: Colors.white,

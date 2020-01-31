@@ -84,23 +84,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             appBar: _appBar(),
             body: selectedIndex == 1
                 ? widget.user.isClient
-                    ? NotificationContainer(false)
-                    : widget.user.userType == UserType.admin
-                        ? TabBarView(
-                            controller: tabController,
-                            children: <Widget>[
-                              NotificationContainer(false),
-                              NotificationContainer(true),
-                              RequestContainer()
-                            ],
-                          )
-                        : TabBarView(
-                            controller: tabController,
-                            children: <Widget>[
-                              NotificationContainer(false),
-                              NotificationContainer(true),
-                            ],
-                          )
+                ? NotificationContainer(false)
+                : widget.user.userType == UserType.admin
+                ? TabBarView(
+              controller: tabController,
+              children: <Widget>[
+                NotificationContainer(false),
+                NotificationContainer(true),
+                RequestContainer()
+              ],
+            )
+                : TabBarView(
+              controller: tabController,
+              children: <Widget>[
+                NotificationContainer(false),
+                NotificationContainer(true),
+              ],
+            )
                 : Body(selectedIndex)),
       ),
     );
@@ -109,60 +109,61 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget _appBar() {
     return AppBar(
       backgroundColor: Colors.black,
+     // title: selectedIndex ==3 ?Center(child: Text('Booking')):Text(''),
       bottom: selectedIndex == 1
           ? widget.user.isClient
-              ? PreferredSize(
-                  child: Container(),
-                  preferredSize: Size.fromHeight(0),
-                )
-              : TabBar(
-                  indicatorColor: Colors.greenAccent,
-                  controller: tabController,
-                  tabs: widget.user.userType == UserType.admin
-                      ? <Widget>[
-                          Tab(
-                            child: Text(
-                              'My Post' + ' ' + '(${widget.myPostCount})',
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor),
-                            ),
-                          ),
-                          Tab(
-                            child: Text(
-                              'All Post' + ' ' + '(${widget.allPostCount})',
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor),
-                            ),
-                          ),
-                          Tab(
-                            child: Text(
-                              'All Requests' + ' ' + '(${widget.reportCount})',
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor),
-                            ),
-                          ),
-                        ]
-                      : <Widget>[
-                          Tab(
-                            child: Text(
-                              'My Post' + ' ' + '(${widget.myPostCount})',
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor),
-                            ),
-                          ),
-                          Tab(
-                            child: Text(
-                              'All Post' + ' ' + '(${widget.allPostCount})',
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor),
-                            ),
-                          ),
-                        ],
-                )
-          : PreferredSize(
-              child: Container(),
-              preferredSize: Size.fromHeight(0),
+          ? PreferredSize(
+        child: Container(),
+        preferredSize: Size.fromHeight(0),
+      )
+          : TabBar(
+        indicatorColor: Colors.greenAccent,
+        controller: tabController,
+        tabs: widget.user.userType == UserType.admin
+            ? <Widget>[
+          Tab(
+            child: Text(
+              'My Post' + ' ' + '(${widget.myPostCount})',
+              style: TextStyle(
+                  color: Colors.white),
             ),
+          ),
+          Tab(
+            child: Text(
+              'All Post' + ' ' + '(${widget.allPostCount})',
+              style: TextStyle(
+                  color:Colors.white),
+            ),
+          ),
+          Tab(
+            child: Text(
+              'All Requests' + ' ' + '(${widget.reportCount})',
+              style: TextStyle(
+                  color: Colors.white),
+            ),
+          ),
+        ]
+            : <Widget>[
+          Tab(
+            child: Text(
+              'My Post' + ' ' + '(${widget.myPostCount})',
+              style: TextStyle(
+                  color:Colors.white),
+            ),
+          ),
+          Tab(
+            child: Text(
+              'All Post' + ' ' + '(${widget.allPostCount})',
+              style: TextStyle(
+                  color: Colors.white ),
+            ),
+          ),
+        ],
+      )
+          : PreferredSize(
+        child: Container(),
+        preferredSize: Size.fromHeight(0),
+      ),
       actions: <Widget>[
         Container(
           alignment: Alignment.center,
@@ -179,121 +180,100 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   Widget _drawer() {
     return Drawer(
-      child: Container(
-        color: Colors.blue,
-        padding: EdgeInsets.only(
-          top: SizeConfig.screenHeight * 0.1,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    height: SizeConfig.screenHeight * 0.2,
-                    width: SizeConfig.screenWidth * 0.4,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(SizeConfig.screenHeight * 0.1),
-                      ),
-                      image: DecorationImage(
-                        image: AssetImage('assets/profilepic1.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Text(
-                    widget.user != null ? widget.user.fullName : '',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.screenWidth * 0.1),
-              child: Divider(
-                color: Colors.white,
-                thickness: 2,
-              ),
-            ),
-            _drawerOptions(StringValue.homePage, () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          _scaffoldChild(HomeContainer())));
-            }),
-            _drawerOptions(StringValue.bookingPage, () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          _scaffoldChild(BookingContainer())));
-            }),
-            _drawerOptions(StringValue.profilePage, () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          _scaffoldChild(ProfileContainer())));
-            }),
-            _drawerOptions(StringValue.walletPage, () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          _scaffoldChild(WalletContainer())));
-            }),
-            _drawerOptions(StringValue.historyPage, () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => _scaffoldChild(
-                          NotificationContainer(
-                              widget.user.isClient ? false : true))));
-            }),
-            _drawerOptions(StringValue.logOut, () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return LogoutDialog(widget.logout);
-                  });
-            }),
-          ],
-        ),
+      child: new ListView(
+        children: <Widget>[
+          new UserAccountsDrawerHeader(
+              accountName: new Text(widget.user.fullName),
+              decoration: BoxDecoration(color: Colors.black26),
+              accountEmail: new Text(widget.user.emailId),
+              currentAccountPicture: new CircleAvatar(
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage('assets/profilepic1.png'),
+              )),
+          _createDrawerItem(
+              icon: Icons.perm_contact_calendar,
+              text: 'Profile',
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            _scaffoldChild(ProfileContainer(),'Profile')));
+              }),
+          // _createDrawerItem(icon: Icons.history, text: 'History',onTap:),
+          _createDrawerItem(
+              icon: Icons.account_balance_wallet,
+              text: 'Wallet',
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            _scaffoldChild(WalletContainer(),'Wallet')));
+              }),
+          _createDrawerItem(
+              icon: Icons.book,
+              text: 'Booking',
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            _scaffoldChild(BookingContainer(),'Booking')));
+              }),
+          _createDrawerItem(
+              icon: Icons.local_post_office,
+              text: 'Posts',
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            _scaffoldChild(
+                                NotificationContainer(
+                                    widget.user.isClient ? false : true),'Posts')));
+              }),
+          _createDrawerItem(
+              icon: Icons.exit_to_app,
+              text: 'Logout',
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return LogoutDialog(widget.logout);
+                    });
+              }),
+        ],
       ),
     );
   }
 
-  Widget _scaffoldChild(Widget widget) {
+  Widget _createDrawerItem({IconData icon, String text, Function onTap}) {
+    return InkWell(
+      child: ListTile(
+        title: Row(
+          children: <Widget>[
+            Icon(icon),
+            SizedBox(width: 20,),
+            Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: Text(text),
+            )
+          ],
+        ),
+        onTap: onTap,
+      ),
+    );
+  }
+
+  Widget _scaffoldChild(Widget widget,String text) {
     return Scaffold(
+      appBar: AppBar(
+        title:  Text(text,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.black,
+      ),
       body: widget,
     );
   }
 
-  Widget _drawerOptions(String text, Function onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        margin: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.white,
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-        padding: EdgeInsets.all(
-          SizeConfig.screenHeight * 0.01,
-        ),
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        ),
-      ),
-    );
-  }
 }

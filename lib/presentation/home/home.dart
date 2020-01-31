@@ -13,8 +13,17 @@ import 'package:ocw_app/utils/size_config.dart';
 class Home extends StatefulWidget {
   final Map<VehicleType, PriceTag> priceTag;
   final Function function;
+  final String allPostCount;
+  final String myPostCount;
+  final String reportCount;
 
-  Home(this.priceTag, this.function);
+  Home(
+    this.priceTag,
+    this.function,
+    this.allPostCount,
+    this.myPostCount,
+    this.reportCount,
+  );
 
   @override
   _HomeState createState() => _HomeState();
@@ -39,11 +48,39 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    int sum = int.parse(widget.reportCount) + int.parse(widget.allPostCount);
     SizeConfig().init(context);
     return Container(
       color: Colors.white,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          sum > 0
+              ? Container(
+                  color: Colors.black,
+                  height: 50,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        _notification(
+                          'Posts',
+                          widget.allPostCount,
+                        ),
+                        _notification(
+                          'Requests',
+                          widget.reportCount,
+                        ),
+                        _notification(
+                          'Reports',
+                          widget.reportCount,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : Container(),
           CardGit(),
           Flexible(
             child: Container(
@@ -77,9 +114,8 @@ class _HomeState extends State<Home> {
                           builder: (BuildContext context) => isTapped
                               ? BookDialog(
                                   title: 'Silver 10% off',
-                                  desc:
-                                      "Vacuum Cleaning Rs.${priceTag.vacuumCleaning}/-\nCombined (10%OFF)  Rs.${priceTag.combined}/-\nAutomatic Waxing @${priceTag.automaticWaxing}/-\nRubbing & Polish @${priceTag.rubberPolish}/-\nSeats Cleaning @${priceTag.seatCleaning}/-\nPackage: 2000 (20%OFF) Rs.${priceTag.package} /-",
-                                  pbt: "Book your service",
+                                  desc: '',
+                            pbt: "Book your service",
                                 )
                               : SizedBox());
                     }),
@@ -130,51 +166,51 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                     ),
-                    detailContainer(
-                      image:
-                          "https://door2doorcarwash.com/inside/images/services/steam-bonet.gif",
-                      description:
-                          "This eliminates dirt easily,\n while reaching those areas is very easy to reach",
-                      highlight:
-                          "The secret of steam cleaning \ndepends on the combination of steam and its temperature.",
-                      title: "STEAM WASH\n",
-                    ),
-                    detailContainer(
-                      image:
-                          "https://door2doorcarwash.com/inside/images/services/steam-interior-front-seat.gif",
-                      title: "STEAM INTERIOR \n",
-                      highlight:
-                          "Choosing steam cleaning for your car is really an excellent choice. ",
-                      description:
-                          "Steam air is produced, so heat naturally kills any bacteria or virus in the air.",
-                    ),
-                    detailContainer(
-                      image:
-                          "https://door2doorcarwash.com/inside/images/services/rubbing-car.gif",
-                      highlight:
-                          "Choosing steam cleaning for your car is really an excellent choice. ",
-                      title: "RUBBING & POLISHING\n",
-                      description:
-                          "Steam air is produced, so heat naturally kills any bacteria or virus in the air.",
-                    ),
-                    detailContainer(
-                      image:
-                          "https://door2doorcarwash.com/inside/images/services/foam-car.gif",
-                      title: "FOAM CAR WASH\n",
-                      highlight:
-                          " Pre-foam wash is the secret of professional to reduce scratch on every car wash. ",
-                      description:
-                          "Foam gently breaks down intense filth and grime, and rinses clean to reveal the beautiful surface.",
-                    ),
-                    detailContainer(
-                      image:
-                          "https://door2doorcarwash.com/inside/images/services/steam-engine.gif",
-                      highlight:
-                          "Your car engine has fluid stains, both can be more flammable.",
-                      title: "ENGINE STEAM\n",
-                      description:
-                          "You can reduce the risk of engine fire by cleaning the car engine steam.",
-                    ),
+//                    detailContainer(
+//                      image:
+//                          "https://door2doorcarwash.com/inside/images/services/steam-bonet.gif",
+//                      description:
+//                          "This eliminates dirt easily,\n while reaching those areas is very easy to reach",
+//                      highlight:
+//                          "The secret of steam cleaning \ndepends on the combination of steam and its temperature.",
+//                      title: "STEAM WASH\n",
+//                    ),
+//                    detailContainer(
+//                      image:
+//                          "https://door2doorcarwash.com/inside/images/services/steam-interior-front-seat.gif",
+//                      title: "STEAM INTERIOR \n",
+//                      highlight:
+//                          "Choosing steam cleaning for your car is really an excellent choice. ",
+//                      description:
+//                          "Steam air is produced, so heat naturally kills any bacteria or virus in the air.",
+//                    ),
+//                    detailContainer(
+//                      image:
+//                          "https://door2doorcarwash.com/inside/images/services/rubbing-car.gif",
+//                      highlight:
+//                          "Choosing steam cleaning for your car is really an excellent choice. ",
+//                      title: "RUBBING & POLISHING\n",
+//                      description:
+//                          "Steam air is produced, so heat naturally kills any bacteria or virus in the air.",
+//                    ),
+//                    detailContainer(
+//                      image:
+//                          "https://door2doorcarwash.com/inside/images/services/foam-car.gif",
+//                      title: "FOAM CAR WASH\n",
+//                      highlight:
+//                          " Pre-foam wash is the secret of professional to reduce scratch on every car wash. ",
+//                      description:
+//                          "Foam gently breaks down intense filth and grime, and rinses clean to reveal the beautiful surface.",
+//                    ),
+//                    detailContainer(
+//                      image:
+//                          "https://door2doorcarwash.com/inside/images/services/steam-engine.gif",
+//                      highlight:
+//                          "Your car engine has fluid stains, both can be more flammable.",
+//                      title: "ENGINE STEAM\n",
+//                      description:
+//                          "You can reduce the risk of engine fire by cleaning the car engine steam.",
+//                    ),
                   ],
                 ),
               ),
@@ -182,6 +218,28 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _notification(String text, String widget) {
+    var s = int.parse(widget);
+    return Row(
+      children: <Widget>[
+        Container(
+          height: 20,
+          child: Text(
+            text,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        ),
+        s > 0
+            ? Icon(
+                Icons.notifications_active,
+                color: Colors.red,
+                size: 15,
+              )
+            : Container()
+      ],
     );
   }
 

@@ -679,46 +679,46 @@ class _ProfilePageState extends State<ProfilePage>
                                   ],
                                 ))
                             : Container(),
-                        _status
-                            ? (Padding(
-                                padding: EdgeInsets.only(
-                                    left: 25.0, right: 25.0, top: 10),
-                                child: new Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    new Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: <Widget>[
-                                        Icon(Icons.remove_circle_outline),
-                                        SizedBox(
-                                          width: 50,
-                                        ),
-                                        InkWell(
-                                          child: new Text(
-                                            'Logout',
-                                            style: TextStyle(
-                                                fontSize: 16.0,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          onTap: () {
-                                            showDialog(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return LogoutDialog(
-                                                      widget.logout);
-                                                });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                )))
-                            : Container(),
+//                        _status
+//                            ? (Padding(
+//                                padding: EdgeInsets.only(
+//                                    left: 25.0, right: 25.0, top: 10),
+//                                child: new Column(
+//                                  mainAxisSize: MainAxisSize.max,
+//                                  mainAxisAlignment:
+//                                      MainAxisAlignment.spaceBetween,
+//                                  children: <Widget>[
+//                                    new Row(
+//                                      mainAxisAlignment:
+//                                          MainAxisAlignment.start,
+//                                      mainAxisSize: MainAxisSize.max,
+//                                      children: <Widget>[
+//                                        Icon(Icons.remove_circle_outline),
+//                                        SizedBox(
+//                                          width: 50,
+//                                        ),
+//                                        InkWell(
+//                                          child: new Text(
+//                                            'Logout',
+//                                            style: TextStyle(
+//                                                fontSize: 16.0,
+//                                                fontWeight: FontWeight.w500),
+//                                          ),
+//                                          onTap: () {
+//                                            showDialog(
+//                                                context: context,
+//                                                builder:
+//                                                    (BuildContext context) {
+//                                                  return LogoutDialog(
+//                                                      widget.logout);
+//                                                });
+//                                          },
+//                                        ),
+//                                      ],
+//                                    ),
+//                                  ],
+//                                )))
+//                            : Container(),
                         SizedBox(
                           height: 5,
                         ),

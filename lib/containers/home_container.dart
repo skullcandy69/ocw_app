@@ -15,7 +15,12 @@ class HomeContainer extends StatelessWidget {
     return StoreConnector<AppState, _ViewModel>(
       converter: _ViewModel.fromStore,
       builder: (BuildContext context, _viewModel) {
-        return Home(_viewModel.priceTag, _viewModel.onRefresh);
+        return Home(
+            _viewModel.priceTag,
+            _viewModel.onRefresh,
+            _viewModel.allPostCount,
+            _viewModel.myPostCount,
+            _viewModel.reportCount);
       },
     );
   }
@@ -24,12 +29,24 @@ class HomeContainer extends StatelessWidget {
 class _ViewModel {
   final Map<VehicleType, PriceTag> priceTag;
   final Function onRefresh;
+  final String myPostCount;
+  final String allPostCount;
+  final String reportCount;
 
-  _ViewModel({this.priceTag, this.onRefresh});
+  _ViewModel({
+    this.priceTag,
+    this.onRefresh,
+    this.reportCount,
+    this.myPostCount,
+    this.allPostCount,
+  });
 
   static _ViewModel fromStore(Store<AppState> store) {
     return _ViewModel(
         priceTag: store.state.priceTag.priceTags.toMap(),
+        allPostCount: store.state.all.length.toString(),
+        myPostCount: store.state.my.length.toString(),
+        reportCount: store.state.getAllRequest.length.toString(),
         onRefresh: () {
           store.dispatch(OnRefreshWallet());
         });

@@ -94,7 +94,7 @@ class _BookingState extends State<Booking> {
                       alignment: Alignment.center,
                       margin: EdgeInsets.all(5),
                       child: AutoSizeText(
-                        StringValue.bookingPage,
+                        'Enter Details',
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.w600,
